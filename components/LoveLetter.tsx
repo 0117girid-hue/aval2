@@ -5,10 +5,17 @@ import { Heart } from 'lucide-react';
 
 const letterContent = `My Dearest,
 
-heyy hii divi hiiiii
+papa  First of all, Happy Valentine’s Day and i love you too 🖤✨ una mari yarum ena avlo care pannathu illa en life fa erukatum careear ra erukatum ne tha firt and last 
+and some times na neriya kovam paduven bcoz avlo uriya enaku un mela so athum one reason na kova padurathuku but epo etho knjm mariten nu nenaikuren .
+ne epoum epdi en mela care katite eru enaku athu rmba pidikum even na kovapatalum na ena tha kova ma eruthalum una nenaikama illa atha first ne puruinjuko. iam always love you and waiting for your message and your presences also love youu...🖤
+ 
+Missing you already. Let’s meet very soon 🫂😚
+
+important ! 
+etha panna knjm kasta paten knjm credits kuduthu polamee....😅
 
 Yours always,
-Me`;
+porikii`;
 
 export const LoveLetter: React.FC = () => {
   const [displayText, setDisplayText] = useState('');
