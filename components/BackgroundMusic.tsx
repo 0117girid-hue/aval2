@@ -14,12 +14,12 @@ export const BackgroundMusic: React.FC = () => {
     const pauseGlobal = () => audio.pause();
     const playGlobal = () => audio.play().catch(() => {});
 
-    window.addEventListener("pause-global-music", pauseGlobal);
-    window.addEventListener("play-global-music", playGlobal);
+    window.addEventListener("pause-global-music", pauseGlobal as EventListener);
+    window.addEventListener("play-global-music", playGlobal as EventListener);
 
     return () => {
-      window.removeEventListener("pause-global-music", pauseGlobal);
-      window.removeEventListener("play-global-music", playGlobal);
+      window.removeEventListener("pause-global-music", pauseGlobal as EventListener);
+      window.removeEventListener("play-global-music", playGlobal as EventListener);
     };
   }, []);
 
@@ -32,9 +32,15 @@ export const BackgroundMusic: React.FC = () => {
         loop
       />
 
-      {/* Speaker button (user click starts music) */}
+      {/* Speaker button */}
       {showIcon && (
-      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+        <div
+          className="fixed bottom-4 right-4 z-[9999] pointer-events-auto"
+          style={{
+            paddingBottom: "env(safe-area-inset-bottom)",
+            paddingRight: "env(safe-area-inset-right)",
+          }}
+        >
           <button
             onClick={() => {
               if (audioRef.current) {
@@ -44,7 +50,7 @@ export const BackgroundMusic: React.FC = () => {
                   .catch((e) => console.log("Play blocked:", e));
               }
             }}
-            className="w-12 h-12 bg-pink-500 text-white rounded-full shadow-lg flex items-center justify-center animate-pulse"
+            className="w-12 h-12 bg-pink-500 text-white rounded-full shadow-lg flex items-center justify-center animate-pulse active:scale-95"
             aria-label="Play background music"
           >
             <Volume2 />

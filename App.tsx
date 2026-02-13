@@ -1,15 +1,20 @@
-
-import React, { useState, useEffect } from 'react';
-import { FloatingHearts } from './components/FloatingHearts';
-import { Hero } from './components/Hero';
-import { Timeline } from './components/Timeline';
-import { Gallery } from './components/Gallery';
-import { Moments } from './components/Moments';
-import { MusicPlayer } from './components/MusicPlayer';
-import { LoveLetter } from './components/LoveLetter';
-import { PoemGenerator } from './components/PoemGenerator';
-import { Heart, Music, Camera, BookHeart, MessageCircleHeart, History } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { FloatingHearts } from "./components/FloatingHearts";
+import { Hero } from "./components/Hero";
+import { Timeline } from "./components/Timeline";
+import { Gallery } from "./components/Gallery";
+import { Moments } from "./components/Moments";
+import { MusicPlayer } from "./components/MusicPlayer";
+import { LoveLetter } from "./components/LoveLetter";
+import { PoemGenerator } from "./components/PoemGenerator";
+import {
+  Heart,
+  Music,
+  Camera,
+  BookHeart,
+  MessageCircleHeart,
+  History,
+} from "lucide-react";
 import { BackgroundMusic } from "./components/BackgroundMusic";
 
 const App: React.FC = () => {
@@ -19,20 +24,28 @@ const App: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FFF8F9] text-gray-800 selection:bg-pink-200 selection:text-pink-900">
+    <div className="min-h-screen bg-[#FFF8F9] text-gray-800 overflow-x-hidden selection:bg-pink-200 selection:text-pink-900">
       <FloatingHearts />
-      
+
       {/* Navigation */}
-      <nav className={`fixed top-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ${scrolled ? 'w-[95%] md:w-auto' : 'w-full px-6'}`}>
-        <div className={`mx-auto flex items-center justify-between md:justify-center gap-2 md:gap-8 px-4 md:px-10 py-4 rounded-full backdrop-blur-lg border border-white/40 shadow-lg ${scrolled ? 'bg-white/70' : 'bg-transparent shadow-none border-transparent'}`}>
-          <a href="#home" className="p-2 hover:bg-pink-50 rounded-full transition-colors text-pink-500 font-bold hidden md:block">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 w-[95%] max-w-[1100px]">
+        <div
+          className={`mx-auto flex items-center justify-between md:justify-center gap-2 md:gap-8 px-4 md:px-10 py-4 rounded-full backdrop-blur-lg border border-white/40 shadow-lg ${
+            scrolled ? "bg-white/70" : "bg-transparent shadow-none border-transparent"
+          }`}
+        >
+          <a
+            href="#home"
+            className="p-2 hover:bg-pink-50 rounded-full transition-colors text-pink-500 font-bold hidden md:block"
+          >
             <Heart size={24} />
           </a>
+
           <div className="flex items-center gap-1 md:gap-6">
             <NavLink href="#story" icon={<History size={18} />} label="Story" />
             <NavLink href="#gallery" icon={<Camera size={18} />} label="Gallery" />
@@ -40,6 +53,7 @@ const App: React.FC = () => {
             <NavLink href="#music" icon={<Music size={18} />} label="Music" />
             <NavLink href="#letter" icon={<MessageCircleHeart size={18} />} label="Letter" />
           </div>
+
           <div className="p-2 bg-pink-100 rounded-full md:hidden">
             <Heart size={18} className="text-pink-500" fill="currentColor" />
           </div>
@@ -47,7 +61,7 @@ const App: React.FC = () => {
       </nav>
 
       <main>
-        <BackgroundMusic/>
+        <BackgroundMusic />
         <Hero />
         <Timeline />
         <Gallery />
@@ -71,12 +85,18 @@ const App: React.FC = () => {
   );
 };
 
-const NavLink: React.FC<{ href: string; icon: React.ReactNode; label: string }> = ({ href, icon, label }) => (
-  <a 
-    href={href} 
+const NavLink: React.FC<{
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+}> = ({ href, icon, label }) => (
+  <a
+    href={href}
     className="flex items-center gap-2 px-3 py-2 md:px-4 rounded-full hover:bg-pink-100 transition-all text-gray-600 hover:text-pink-600 font-semibold text-sm md:text-base group"
   >
-    <span className="text-pink-400 group-hover:scale-110 transition-transform">{icon}</span>
+    <span className="text-pink-400 group-hover:scale-110 transition-transform">
+      {icon}
+    </span>
     <span className="hidden sm:inline">{label}</span>
   </a>
 );
